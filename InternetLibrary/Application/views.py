@@ -2,23 +2,7 @@ from .models import Author, Book
 from rest_framework import viewsets
 from .serializers import AuthorSerializer, BookSerializer
 from django_filters import rest_framework as filters
-
-
-class AuthorFilter(filters.FilterSet):
-    name = filters.CharFilter(lookup_expr='icontains')
-    id = filters.CharFilter(lookup_expr='icontains')
-
-    class Meta:
-        model = Author
-        fields = '__all__'
-
-
-class BookFilterter(filters.FilterSet):
-    name = filters.CharFilter(lookup_expr='icontains')
-
-    class Meta:
-        model = Book
-        fields = '__all__'
+from .filters import AuthorFilter, BookFilterter
 
 
 class AuthorViewSet(viewsets.ModelViewSet):
