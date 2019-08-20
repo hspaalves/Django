@@ -22,9 +22,11 @@ class BookViewSet(viewsets.ModelViewSet):
 class BookDetailAPIView(mixins.UpdateModelMixin,
                         mixins.DestroyModelMixin,
                         generics.RetrieveAPIView):
-    queryset = Book.objects.all()
+    queryset = Author.objects.all()
     lookup_field = 'id'
-    serializer_class = BookSerializer
+    serializer_class = AuthorSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = AuthorFilter
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
