@@ -24,7 +24,7 @@ class BookDetailAPIView(mixins.UpdateModelMixin,
                         generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = AuthorByBookSerializer
-    lookup_url_kwarg = 'author'
+    lookup_field = 'author'
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
