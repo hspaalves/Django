@@ -12,7 +12,7 @@ class Book(models.Model):
         db_table = 'book'
 
     def __str__(self):
-        return " %s" % (
+        return " %s " % (
             self.name
         )
 

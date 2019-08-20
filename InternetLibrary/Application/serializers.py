@@ -7,7 +7,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = '__all__'
+        fields = ['book', 'id', 'name']
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -16,6 +16,3 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['name', 'summary', 'author']
-
-
-
