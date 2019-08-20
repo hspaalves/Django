@@ -1,6 +1,6 @@
 from .models import Author, Book
 from rest_framework import viewsets, generics, mixins
-from .serializers import AuthorSerializer, BookSerializer
+from .serializers import AuthorSerializer, BookSerializer, AuthorByBookSerializer
 from django_filters import rest_framework as filters
 from .filters import AuthorFilter, BookFilterter
 
@@ -22,11 +22,9 @@ class BookViewSet(viewsets.ModelViewSet):
 class BookDetailAPIView(mixins.UpdateModelMixin,
                         mixins.DestroyModelMixin,
                         generics.RetrieveAPIView):
-    queryset = Author.objects.all()
-    lookup_field = 'id'
-    serializer_class = AuthorSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = AuthorFilter
+    queryset = Book.objects.all()
+    serializer_class = AuthorByBookSerializer
+    lookup_url_kwarg = 'author'
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)

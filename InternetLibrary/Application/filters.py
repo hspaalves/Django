@@ -17,3 +17,11 @@ class BookFilterter(filters.FilterSet):
     class Meta:
         model = Book
         fields = '__all__'
+
+
+class BookDetailFilter(filters.FilterSet):
+    author = filters.Filter('author', lookup_expr='exact')
+
+    class Meta:
+        model = Book
+        fields = '__all__'
