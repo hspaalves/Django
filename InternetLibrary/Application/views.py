@@ -19,18 +19,9 @@ class BookViewSet(viewsets.ModelViewSet):
     filter_class = BookFilterter
 
 
-class BookDetailAPIView(mixins.UpdateModelMixin,
-                        mixins.DestroyModelMixin,
-                        generics.RetrieveAPIView):
-    queryset = Book.objects.all()
+class BookDetailAPIView(viewsets.ModelViewSet):
+
+    def get_queryset(self):
+        return Book.objects.filter(author=self.kwargs['pk'])
+
     serializer_class = AuthorByBookSerializer
-    lookup_field = 'author'
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def patch(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
