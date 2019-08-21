@@ -10,9 +10,9 @@ class Author(models.Model):
         db_table = 'author'
 
     def __str__(self):
-        return "%s | %s" % (
+        return "%s | %s " % (
             self.name,
-            self.id,
+            self.id
         )
 
 
@@ -27,7 +27,7 @@ class Book(models.Model):
         db_table = 'book'
 
     def __str__(self):
-        return " %s | %s" % (
+        return " %s | %s " % (
             self.name,
             self.author
         )
