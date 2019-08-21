@@ -11,6 +11,5 @@ router.register(r'v1/author', views.AuthorViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^v1/author/(?P<pk>\d+)/book', views.BookDetailAPIView.as_view({'get': 'retrieve'}), name='detail')
 
 ]
