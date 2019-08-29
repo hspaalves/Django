@@ -24,3 +24,6 @@ class BookViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = BookFilterter
 
+    @action(detail=True)
+    def author(self, request, pk=None):
+        return Response(list(Author.objects.filter(book=pk).values()))
