@@ -15,7 +15,7 @@ class AuthorViewSet(viewsets.ModelViewSet):
 
     @action(detail=True)
     def book(self, request, pk=None):
-        return Response(list(Book.objects.filter(author=pk).values()))
+        return Response(BookSerializer(Book.objects.all().order_by('name'), many=True).data)
 
 
 class BookViewSet(viewsets.ModelViewSet):
@@ -26,4 +26,5 @@ class BookViewSet(viewsets.ModelViewSet):
 
     @action(detail=True)
     def author(self, request, pk=None):
+
         return Response(list(Author.objects.filter(book=pk).values()))
