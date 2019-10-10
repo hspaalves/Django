@@ -27,7 +27,8 @@ class Book(models.Model):
         db_table = 'book'
 
     def __str__(self):
-        return " %s | %s " % (
+        return " %s | %s |%s" % (
             self.name,
-            self.author
+            self.author,
+            self.summary
         )
