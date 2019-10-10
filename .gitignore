@@ -80,4 +80,4 @@ gen
 pyvenv.cfg
 .venv
 pip-selfcheck.json
-
+/InternetLibrary/Application/migrations/0001_initial.py
